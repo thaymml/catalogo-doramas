@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${dorama.title}">Detalhes do Dorama</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+    <h1 th:text="${dorama.title}">Título do Dorama</h1>
+    <a href="/" class="back-button">← Voltar ao Início</a>
+</header>
+
+<section class="details-container"
+         th:style="'background: url(' + ${dorama.image} + ') no-repeat center center; background-size: cover;'">
+    <div class="details-overlay">
+        <div class="details-content">
+            <img th:src="@{${dorama.image}}" alt="Imagem do Dorama" class="dorama-image"/>
+            <div class="details-info">
+                <div class="sinopse">
+                    <h2>Sinopse</h2>
+                    <p th:text="${dorama.synopsis}"></p>
+                </div>
+                <div class="info-blocks">
+                    <div class="info-block">
+                        <i class="fas fa-users"></i>
+                        <p><strong>Elenco:</strong> <span th:text="${dorama.cast}"></span></p>
+                    </div>
+                    <div class="info-block">
+                        <i class="fas fa-theater-masks"></i>
+                        <p><strong>Gênero:</strong> <span th:text="${dorama.genre}"></span></p>
+                    </div>
+                    <div class="info-block">
+                        <i class="fas fa-globe"></i>
+                        <p><strong>País de Origem:</strong> <span th:text="${dorama.originCountry}"></span></p>
+                    </div>
+                    <div class="info-block">
+                        <i class="fas fa-tv"></i>
+                        <p><strong>Onde assistir:</strong> <span th:text="${dorama.watch}"></span></p>
+                    </div>
+                    <div class="info-block">
+                        <i class="fas fa-calendar-alt"></i>
+                        <p><strong>Temporada:</strong> <span th:text="${dorama.seasons}"></span></p>
+                    </div>
+                    <div class="info-block">
+                        <i class="fas fa-list"></i>
+                        <p><strong>Episódios:</strong> <span th:text="${dorama.episodes}"></span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="details-buttons">
+                <a th:href="${dorama.trailer}" target="_blank" class="button trailer-btn">
+                    <i class="fa fa-play"></i> Ver Trailer
+                </a>
+                <a href="/index.html" class="button back-btn">
+                    <i class="fa fa-arrow-left"></i> Voltar ao catálogo
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>

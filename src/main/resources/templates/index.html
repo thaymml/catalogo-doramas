@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Catálogo de Doramas</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+    <h1>Catálogo de Doramas</h1>
+    <a href="/" class="back-button">← Voltar ao Início</a>
+</header>
+<section>
+    <section class="search-section">
+        <input type="text" id="search" placeholder="Buscar doramas...">
+    </section>
+    <div class="dorama-list" id="doramaList">
+        <div th:each="dorama : ${doramas}" class="dorama-item" data-title="${dorama.title}" data-synopsis="${dorama.synopsis}">
+            <img th:src="@{${dorama.image}}" alt="Imagem do Dorama">
+            <h2 th:text="${dorama.title}">Título do Dorama</h2>
+            <p th:text="${dorama.synopsis}">Sinopse do dorama</p>
+            <a th:href="@{'/dorama/' + ${dorama.id}}">Ver detalhes</a>
+        </div>
+    </div>
+</section>
+<div class="pagination" id="pagination">
+</div>
+<script src="/js/pagination.js"></script>
+</body>
+</html>
